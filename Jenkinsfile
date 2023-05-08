@@ -2,18 +2,18 @@ pipeline {
   agent any 
     stages{
         stage("sonarqube static code check"){
-            agent{
-                docker{
-                    image 'openjdk:11'
-                    args '-v $HOME/.m2:/root/.m2'
-                }
-            }
+            // agent{
+            //     docker{
+            //         image 'openjdk:11'
+            //         args '-v $HOME/.m2:/root/.m2'
+            //     }
+            // }
 
             steps{
                 script{
                    withSonarQubeEnv('sonar-server') {
                        sh 'chmod +x gradlew'
-                       sh './gradlew sonarqube --info'
+                       sh './gradlew sonarqube --debug output'
                     }
                     timeout(5) {
                         def qg = waitForQualityGate()
