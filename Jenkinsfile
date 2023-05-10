@@ -5,12 +5,12 @@ pipeline {
   }
     stages{
         stage("Sonarqube Static Code Check"){
-            // agent{
-            //     docker{
-            //         image 'openjdk:11'
-            //         args '-v $HOME/.m2:/root/.m2'
-            //     }
-            // }
+            agent{
+                docker{
+                    image 'openjdk:11'
+                    args '-v $HOME/.m2:/root/.m2'
+                }
+            }
 
             steps{
                 script{
