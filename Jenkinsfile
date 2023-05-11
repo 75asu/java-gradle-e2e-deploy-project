@@ -36,7 +36,7 @@ pipeline {
                         // some block
                         sh '''
                         docker build -t nexus-lab/simplewebapp:${VERSION} .
-                        docker login -u admin -p $nexus-lab-cred 174.138.120.216:8083
+                        docker login -u admin -p $nexus-lab-cred 139.59.51.93:8083
                         docker push nexus-lab/simplewebapp:${VERSION}
                         docker rmi nexus-lab/simplewebapp:${VERSION}
                         '''
